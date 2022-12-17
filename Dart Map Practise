@@ -1,0 +1,48 @@
+double gpaCalculator(double number){
+	if(number>=80 && number<=100){ return 5.0; }
+	else if(number>=70 && number<=79){ return 4.0; }
+	else if(number>=60 && number<=69){ return 3.5; }
+	else if(number>=50 && number<=59){ return 3.0; }
+	else if(number>=40 && number<=49){ return 2.0; }
+	else if(number>=33 && number<=39){ return 1.0; }
+	else{ return 0.0; }
+}
+
+
+void main(){
+
+	// User input of marks
+	Map<String, double> marks = {
+		"Bangla" : 70,
+		"English" : 60,
+		"Math" : 85,
+		"Social" : 55,
+		"Religion" : 80,
+		"Science" : 71
+	};
+
+	// Calculating gpa point for each subject
+	Map<String, double> gpa = {};
+	marks.forEach((k,v) => gpa[k]=gpaCalculator(v));
+
+	// printing each subject marks and Points
+	marks.forEach((k,v) => print("$k:$v GPA:${gpa[k]}"));
+
+	// printing a new line
+	print("");
+
+	// calculation of total marks
+	double totalMark = 0;
+	marks.forEach((k,v) => totalMark=totalMark+v);
+
+	// calculation of total CGPA
+	double totalPoint = 0;
+	gpa.forEach((k,v) => totalPoint=totalPoint+v);
+	double CGPA = totalPoint/gpa.length;
+
+	print("Total mark : $totalMark");
+	print("Average mark : ${totalMark/marks.length}");
+	print("Total Point : $totalPoint");
+	print("Total Subject : ${gpa.length}");
+	print("CGPA : $CGPA");
+}
